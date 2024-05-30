@@ -6,7 +6,9 @@ public class NewBehaviourScript : MonoBehaviour
 {
     void Start()
     {
-        print("Hello World!");
+        Debug.Log("Hello World - Debug Log");
+        Debug.LogWarning("Hello World - Warning Log");
+        Debug.LogError("Hello World - Error Log");
     }
 
     void Update()
