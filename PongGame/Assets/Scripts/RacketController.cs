@@ -7,14 +7,17 @@ public class RacketController : MonoBehaviour
     // create vector3
     private Vector3 positionRacket;
     public float yPosition = 0.0f;
+    public bool isPlayer1;
     void Start()
     {
-        // initial position of racket
-        positionRacket.x = -8f;
+        // init with current position (seted in Unity)
+        positionRacket = transform.position;
     }
 
     void Update()
     {
+        float speedDelta = 5f * Time.deltaTime;
+        float limit = 3.5f;
         positionRacket.y = yPosition;
         
 
@@ -24,12 +27,29 @@ public class RacketController : MonoBehaviour
         transform.position = positionRacket;
 
         // Get user input
-        if(Input.GetKey(KeyCode.UpArrow) && yPosition < 3.5f){
-            yPosition += 5f * Time.deltaTime;
+        if(!isPlayer1){
+            if(Input.GetKey(KeyCode.UpArrow)){
+            yPosition += speedDelta;
+            }
+            if(Input.GetKey(KeyCode.DownArrow)){
+                yPosition -= speedDelta;
+            }
+        }else{
+            if(Input.GetKey(KeyCode.W)){
+            yPosition += speedDelta;
         }
-        if(Input.GetKey(KeyCode.DownArrow) && yPosition > -3.5f){
-            yPosition -= 5f * Time.deltaTime;
+            if(Input.GetKey(KeyCode.S)){
+                yPosition -= speedDelta;
+            }
         }
+
+        if(yPosition < -limit){
+            yPosition = -limit;
+        }
+        if(yPosition > limit){
+            yPosition = limit;
+        }
+
 
     }
 }
