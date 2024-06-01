@@ -11,7 +11,11 @@ public class BallController : MonoBehaviour
     
     void Start()
     {   
-        ballVelocity.x = -speed;
+        // random to generate 1 or -1
+        float range = Random.Range(0, 2) == 0 ? -1 : 1;
+
+        ballVelocity.x = range * speed; // ball goes to the left or right
+        ballVelocity.y = range * speed; // ball goes up or down
         ballRB.velocity = ballVelocity;
     }
 

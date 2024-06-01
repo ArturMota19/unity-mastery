@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yPosition: 0
-  isPlayer1: 0
+  isPlayer1: 1
 --- !u!61 &1909712085
 BoxCollider2D:
   m_ObjectHideFlags: 0
