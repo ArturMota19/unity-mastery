@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
-        // increment ball velocity
+        if(
+            transform.position.x > 8.2 || transform.position.x < -8.2){
+            SceneManager.LoadScene("Pong");
+        }
+        
     }
 }

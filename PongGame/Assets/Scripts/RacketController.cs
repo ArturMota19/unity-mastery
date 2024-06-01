@@ -62,7 +62,7 @@ public class RacketController : MonoBehaviour
         }
         // ball position
         if(!isPlayer1 && auto){
-            yPosition = Mathf.Lerp(yPosition,transformBall.position.y, 0.02f);
+            yPosition = Mathf.Lerp(yPosition,transformBall.position.y, 0.015f);
         }
         if(yPosition < -limit){
             yPosition = -limit;
