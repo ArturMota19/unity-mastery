@@ -6,7 +6,7 @@ public class BallController : MonoBehaviour
 {
     public Rigidbody2D ballRB;
     public Vector2 ballVelocity;
-    private float speed = 8f;
+    private float speed = 10f;
 
     
     void Start()
@@ -21,5 +21,6 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
+        // increment ball velocity
     }
 }

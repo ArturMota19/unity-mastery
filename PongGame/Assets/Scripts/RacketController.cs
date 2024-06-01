@@ -8,6 +8,12 @@ public class RacketController : MonoBehaviour
     private Vector3 positionRacket;
     public float yPosition = 0.0f;
     public bool isPlayer1;
+
+    // var to check if player 2 is AI
+    public bool auto = false;
+
+    // get ball position
+    public Transform transformBall;
     void Start()
     {
         // init with current position (seted in Unity)
@@ -16,7 +22,7 @@ public class RacketController : MonoBehaviour
 
     void Update()
     {
-        float speedDelta = 5f * Time.deltaTime;
+        float speedDelta = 8f * Time.deltaTime;
         float limit = 3.5f;
         positionRacket.y = yPosition;
         
@@ -26,30 +32,43 @@ public class RacketController : MonoBehaviour
         // Transform -> class that contains position, rotation, and scale of an object
         transform.position = positionRacket;
 
-        // Get user input
-        if(!isPlayer1){
-            if(Input.GetKey(KeyCode.UpArrow)){
-            yPosition += speedDelta;
-            }
-            if(Input.GetKey(KeyCode.DownArrow)){
-                yPosition -= speedDelta;
-            }
-        }else{
-            if(Input.GetKey(KeyCode.W)){
-            yPosition += speedDelta;
-        }
-            if(Input.GetKey(KeyCode.S)){
-                yPosition -= speedDelta;
-            }
-        }
+        if(!auto){
 
+
+            // Get user input
+            if(!isPlayer1){
+                if(Input.GetKey(KeyCode.UpArrow)){
+                yPosition += speedDelta;
+                }
+                if(Input.GetKey(KeyCode.DownArrow)){
+                    yPosition -= speedDelta;
+                }
+            }else{
+                if(Input.GetKey(KeyCode.W)){
+                yPosition += speedDelta;
+            }
+                if(Input.GetKey(KeyCode.S)){
+                    yPosition -= speedDelta;
+                }
+            }
+
+            if(yPosition < -limit){
+                yPosition = -limit;
+            }
+            if(yPosition > limit){
+                yPosition = limit;
+            }
+        }
+        // ball position
+        if(!isPlayer1 && auto){
+            yPosition = Mathf.Lerp(yPosition,transformBall.position.y, 0.02f);
+        }
         if(yPosition < -limit){
             yPosition = -limit;
         }
         if(yPosition > limit){
             yPosition = limit;
         }
-
 
     }
 }

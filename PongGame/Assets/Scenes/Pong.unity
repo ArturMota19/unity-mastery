@@ -813,6 +813,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yPosition: 0
   isPlayer1: 0
+  auto: 1
+  transformBall: {fileID: 296848762}
 --- !u!212 &1813438028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1057,6 +1059,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yPosition: 0
   isPlayer1: 1
+  auto: 0
+  transformBall: {fileID: 296848762}
 --- !u!61 &1909712085
 BoxCollider2D:
   m_ObjectHideFlags: 0
