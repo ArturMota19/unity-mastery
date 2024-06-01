@@ -33,8 +33,6 @@ public class RacketController : MonoBehaviour
         transform.position = positionRacket;
 
         if(!auto){
-
-
             // Get user input
             if(!isPlayer1){
                 if(Input.GetKey(KeyCode.UpArrow)){
@@ -58,6 +56,9 @@ public class RacketController : MonoBehaviour
             if(yPosition > limit){
                 yPosition = limit;
             }
+        }
+        if(Input.GetKey(KeyCode.UpArrow)  || Input.GetKey(KeyCode.DownArrow)){
+            auto = false;
         }
         // ball position
         if(!isPlayer1 && auto){
