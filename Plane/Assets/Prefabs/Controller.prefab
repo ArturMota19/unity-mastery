@@ -49,5 +49,6 @@ MonoBehaviour:
   position: {x: 16, y: 5, z: 0}
   score: {fileID: 0}
   levelText: {fileID: 0}
+  levelSound: {fileID: 8300000, guid: 9cb94ee69bb375a4c8a2f6ac0e3c2ae5, type: 3}
   level: 1
   proxLevel: 10
