@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   obstacle: {fileID: 3540344955913368343}
+  gameController: {fileID: 0}
 --- !u!1 &5017765641356087775
 GameObject:
   m_ObjectHideFlags: 0
