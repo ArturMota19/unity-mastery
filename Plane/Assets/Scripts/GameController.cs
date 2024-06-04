@@ -11,6 +11,7 @@ public class Controller : MonoBehaviour
     [SerializeField] private Vector3 position;
     [SerializeField] private Text score;
     [SerializeField] private Text levelText;
+    [SerializeField] private AudioClip levelSound;
     private float points = 0;
     [SerializeField] private float level = 1;
     [SerializeField] private float proxLevel = 10f;
@@ -47,6 +48,7 @@ public class Controller : MonoBehaviour
             level++;
             proxLevel *= 2;
             levelText.text = "Level: " + level.ToString();
+            AudioSource.PlayClipAtPoint(levelSound, Camera.main.transform.position);
         }
     }
 
