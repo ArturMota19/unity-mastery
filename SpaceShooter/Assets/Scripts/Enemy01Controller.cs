@@ -9,6 +9,9 @@ public class Enemy01Controller : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float speed = -1f;
     [SerializeField] private GameObject shootPrefab;
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private  Transform shootPoint;
+    [SerializeField] public int health = 2;
     private float shootTime = 1f;
     // Start is called before the first frame update
     void Start()
@@ -26,9 +29,18 @@ public class Enemy01Controller : MonoBehaviour
         shootTime -= Time.deltaTime;
         if(shootTime <= 0 && GetComponentInChildren<SpriteRenderer>().isVisible)
         {
-            Instantiate(shootPrefab, transform.position, transform.rotation);
+            Instantiate(shootPrefab, shootPoint.position, transform.rotation);
             shootTime = Random.Range(1.5f, 2f);
         }
         
+    }
+
+    public void lossHealth(int damage){
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+        }
     }
 }

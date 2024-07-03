@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
     [SerializeField] private GameObject shootPrefab;
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private  Transform shootPoint;
+    [SerializeField] public int health = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +30,17 @@ public class PlayerController : MonoBehaviour
         // fire
         if(Input.GetButtonDown("Fire1"))
         {
-            Instantiate(shootPrefab, transform.position, transform.rotation);
+            Instantiate(shootPrefab, shootPoint.position, transform.rotation);
         }
 
         
+    }
+    public void lossHealth(int damage){
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+        }
     }
 }
