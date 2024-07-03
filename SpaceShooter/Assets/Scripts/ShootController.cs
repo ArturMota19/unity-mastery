@@ -17,4 +17,9 @@ public class ShootController : MonoBehaviour
     {
         
     }
+
+    // If one of them has isTrigger and other has Ridigbody2D, this function will work
+    private void OnTriggerEnter2D(Collider2D other) {
+        Destroy(gameObject);
+    }
 }
