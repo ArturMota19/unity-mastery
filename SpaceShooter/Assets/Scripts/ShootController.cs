@@ -24,9 +24,9 @@ public class ShootController : MonoBehaviour
     // If one of them has isTrigger and other has Ridigbody2D, this function will work
     private void OnTriggerEnter2D(Collider2D other) {
         // object that has tag "Enemy" will be destroyed
-        if(other.CompareTag("Enemy01"))
+        if(other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy01Controller>().lossHealth(damage);
+            other.GetComponent<ParentEnemy>().lossHealth(damage);
         }
         if(other.CompareTag("Player01"))
         {

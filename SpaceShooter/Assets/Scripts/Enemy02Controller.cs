@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy01Controller : ParentEnemy
+public class Enemy02Controller : ParentEnemy
 {
-
     // Get rigidbody2D component
     private Rigidbody2D rb;
 
@@ -15,7 +14,7 @@ public class Enemy01Controller : ParentEnemy
         rb.velocity = new Vector2(0, speed);
 
         // random shootTime
-        shootTime = Random.Range(0.5f, 2f);
+        shootTime = Random.Range(0.25f, 1.75f);
     }
 
     // Update is called once per frame
@@ -25,9 +24,8 @@ public class Enemy01Controller : ParentEnemy
         if(shootTime <= 0 && GetComponentInChildren<SpriteRenderer>().isVisible)
         {
             Instantiate(shootPrefab, shootPoint.position, transform.rotation);
-            shootTime = Random.Range(1.5f, 2f);
+            shootTime = Random.Range(1f, 1.75f);
         }
         
     }
-
 }
