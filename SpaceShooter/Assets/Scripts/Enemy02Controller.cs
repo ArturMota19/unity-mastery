@@ -22,6 +22,15 @@ public class Enemy02Controller : ParentEnemy
     {
         GuidedShooting();
 
+        if(transform.position.y < yMax && !hasMoved){
+            hasMoved = true;
+            if(transform.position.x < 0){
+                rb.velocity = new Vector2(-speed , speed);
+            }else{
+                rb.velocity = new Vector2(speed, speed);
+            }
+        }
+
     }
 
     

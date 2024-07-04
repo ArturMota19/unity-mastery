@@ -16,6 +16,9 @@ public class ParentEnemy : MonoBehaviour
     [SerializeField] protected GameObject impactShoot;
     [SerializeField] protected float shootTime = 1f;
     [SerializeField] protected float shootSpeed = -5f;
+    [SerializeField] protected float yMax = 2f;
+
+    protected bool hasMoved = false;
 
     // Start is called before the first frame update
     void Start()
@@ -62,5 +65,9 @@ public class ParentEnemy : MonoBehaviour
             shoot.transform.rotation = UnityEngine.Quaternion.Euler(0, 0, angle + 90);
             shootTime = Random.Range(1f, 1.75f);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Destroy(gameObject);
     }
 }

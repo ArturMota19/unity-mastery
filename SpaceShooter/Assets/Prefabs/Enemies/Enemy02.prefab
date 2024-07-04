@@ -192,6 +192,7 @@ MonoBehaviour:
   impactShoot: {fileID: 2436667630945277084, guid: 1ad72faf58f33524ba0dcd4898c621db, type: 3}
   shootTime: 2
   shootSpeed: 5
+  yMax: 2.5
 --- !u!1 &7239250997016177168
 GameObject:
   m_ObjectHideFlags: 0

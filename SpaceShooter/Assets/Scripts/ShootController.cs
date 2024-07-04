@@ -17,7 +17,7 @@ public class ShootController : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     // If one of them has isTrigger and other has Ridigbody2D, this function will work
