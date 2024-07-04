@@ -252,6 +252,6 @@ MonoBehaviour:
   explosionPrefab: {fileID: 2903348594229735625, guid: 00a4c5c29abd7f542ad9c68c9fce34e0, type: 3}
   shootPoint: {fileID: 1384636355213718937}
   health: 2
-  damage: 1
   impactShoot: {fileID: 2436667630945277084, guid: 1ad72faf58f33524ba0dcd4898c621db, type: 3}
   shootTime: 1
+  shootSpeed: -5

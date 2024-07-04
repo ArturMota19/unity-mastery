@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class ParentEnemy : MonoBehaviour
@@ -14,6 +15,7 @@ public class ParentEnemy : MonoBehaviour
 
     [SerializeField] protected GameObject impactShoot;
     [SerializeField] protected float shootTime = 1f;
+    [SerializeField] protected float shootSpeed = -5f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,33 @@ public class ParentEnemy : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(explosionPrefab, transform.position, transform.rotation);
+        }
+    }
+    public void Shooting()
+    {
+        shootTime -= Time.deltaTime;
+        if (shootTime <= 0 && GetComponentInChildren<SpriteRenderer>().isVisible && GameObject.FindGameObjectWithTag("Player01") != null)
+        {
+            var shoot = Instantiate(shootPrefab, shootPoint.position, transform.rotation);
+            shoot.GetComponent<Rigidbody2D>().velocity = new UnityEngine.Vector2(0f, shootSpeed);
+            shootTime = Random.Range(1f, 1.75f);
+        }
+    }
+
+    public void GuidedShooting()
+    {
+        shootTime -= Time.deltaTime;
+        if (shootTime <= 0 && GetComponentInChildren<SpriteRenderer>().isVisible && GameObject.FindGameObjectWithTag("Player01") != null)
+        {
+            var player = GameObject.FindGameObjectWithTag("Player01");
+            var shoot = Instantiate(shootPrefab, shootPoint.position, transform.rotation);
+            var direction = (player.transform.position - shoot.transform.position).normalized;
+            direction.Normalize();
+
+            shoot.GetComponent<Rigidbody2D>().velocity = direction * shootSpeed ;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            shoot.transform.rotation = UnityEngine.Quaternion.Euler(0, 0, angle + 90);
+            shootTime = Random.Range(1f, 1.75f);
         }
     }
 }

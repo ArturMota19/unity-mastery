@@ -190,6 +190,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 2903348594229735625, guid: 00a4c5c29abd7f542ad9c68c9fce34e0, type: 3}
   shootPoint: {fileID: 5092668541572674834}
   health: 5
+  shootSpeed: 10
 --- !u!50 &2343973924761062363
 Rigidbody2D:
   serializedVersion: 4

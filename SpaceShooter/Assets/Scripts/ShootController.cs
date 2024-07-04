@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShootController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float speed = 10f;
     [SerializeField] private int damage = 1;
     [SerializeField] private GameObject impactShoot;
     void Start()
@@ -13,7 +12,7 @@ public class ShootController : MonoBehaviour
         // define component
         rb = GetComponent<Rigidbody2D>();
         // add velocity to the rigidbody
-        rb.velocity = new Vector2(0, speed);
+
     }
 
     void Update()

@@ -21,13 +21,7 @@ public class Enemy01Controller : ParentEnemy
     // Update is called once per frame
     void Update()
     {
-        shootTime -= Time.deltaTime;
-        if(shootTime <= 0 && GetComponentInChildren<SpriteRenderer>().isVisible)
-        {
-            Instantiate(shootPrefab, shootPoint.position, transform.rotation);
-            shootTime = Random.Range(1.5f, 2f);
-        }
-        
+        Shooting();
     }
 
 }
