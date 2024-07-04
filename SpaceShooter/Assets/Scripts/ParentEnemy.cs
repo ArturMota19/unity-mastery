@@ -68,6 +68,18 @@ public class ParentEnemy : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Destroy(gameObject);
+        if(other.CompareTag("EnemyDestroyer"))
+        {
+            Destroy(gameObject);
+        }
+        
+    }
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Player01"))
+        {
+            other.gameObject.GetComponent<PlayerController>().lossHealth(1);
+            Destroy(gameObject);
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+        }
     }
 }
