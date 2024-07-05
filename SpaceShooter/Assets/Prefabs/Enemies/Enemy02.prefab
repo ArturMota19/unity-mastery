@@ -184,15 +184,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f76f727a250944a9a6d7d27b80c143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -1
+  speed: -2
   shootPrefab: {fileID: 1078101967270403860, guid: e82b7047472bacd439d64208a4f8a02b, type: 3}
   explosionPrefab: {fileID: 2903348594229735625, guid: 00a4c5c29abd7f542ad9c68c9fce34e0, type: 3}
   shootPoint: {fileID: 7373720534614447199}
   health: 4
   impactShoot: {fileID: 2436667630945277084, guid: 1ad72faf58f33524ba0dcd4898c621db, type: 3}
-  shootTime: 2
-  shootSpeed: 5
+  shootTime: 15
+  shootSpeed: 3
   yMax: 2.5
+  pointsGived: 25
 --- !u!1 &7239250997016177168
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,12 +17,13 @@ public class ParentEnemy : MonoBehaviour
     [SerializeField] protected float shootTime = 1f;
     [SerializeField] protected float shootSpeed = -5f;
     [SerializeField] protected float yMax = 2f;
-
+    [SerializeField] protected int pointsGived;
     protected bool hasMoved = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -31,22 +32,29 @@ public class ParentEnemy : MonoBehaviour
         
     }
 
-    public void lossHealth(int damage){
-        health -= damage;
-        if(health <= 0)
-        {
-            Destroy(gameObject);
-            Instantiate(explosionPrefab, transform.position, transform.rotation);
+    public void LossHealth(int damage){
+        if(transform.position.y < 5f){
+            health -= damage;
+            if(health <= 0)
+            {
+                Destroy(gameObject);
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
+                var generator = FindObjectOfType<EnemyGenerator>();
+                generator.DecreaseEnemy();
+                generator.GetPoints(pointsGived);
+                
+            }
         }
     }
     public void Shooting()
     {
+        Debug.Log(shootTime);
         shootTime -= Time.deltaTime;
         if (shootTime <= 0 && GetComponentInChildren<SpriteRenderer>().isVisible && GameObject.FindGameObjectWithTag("Player01") != null)
         {
             var shoot = Instantiate(shootPrefab, shootPoint.position, transform.rotation);
             shoot.GetComponent<Rigidbody2D>().velocity = new UnityEngine.Vector2(0f, shootSpeed);
-            shootTime = Random.Range(1f, 1.75f);
+            shootTime = Random.Range(1f, 3f);
         }
     }
 
@@ -63,7 +71,7 @@ public class ParentEnemy : MonoBehaviour
             shoot.GetComponent<Rigidbody2D>().velocity = direction * shootSpeed ;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             shoot.transform.rotation = UnityEngine.Quaternion.Euler(0, 0, angle + 90);
-            shootTime = Random.Range(1f, 1.75f);
+            shootTime = Random.Range(8f, 12f);
         }
     }
 
@@ -71,14 +79,18 @@ public class ParentEnemy : MonoBehaviour
         if(other.CompareTag("EnemyDestroyer"))
         {
             Destroy(gameObject);
+            var generator = FindObjectOfType<EnemyGenerator>();
+            generator.DecreaseEnemy();
         }
         
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Player01"))
         {
-            other.gameObject.GetComponent<PlayerController>().lossHealth(1);
+            other.gameObject.GetComponent<PlayerController>().LossHealth(1);
             Destroy(gameObject);
+            var generator = FindObjectOfType<EnemyGenerator>();
+            generator.DecreaseEnemy();
             Instantiate(explosionPrefab, transform.position, transform.rotation);
         }
     }

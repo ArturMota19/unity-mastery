@@ -25,11 +25,11 @@ public class ShootController : MonoBehaviour
         // object that has tag "Enemy" will be destroyed
         if(other.CompareTag("Enemy"))
         {
-            other.GetComponent<ParentEnemy>().lossHealth(damage);
+            other.GetComponent<ParentEnemy>().LossHealth(damage);
         }
         if(other.CompareTag("Player01"))
         {
-            other.GetComponent<PlayerController>().lossHealth(damage);
+            other.GetComponent<PlayerController>().LossHealth(damage);
         }
 
         Destroy(gameObject);
