@@ -18,6 +18,7 @@ public class ParentEnemy : MonoBehaviour
     [SerializeField] protected float shootSpeed = -5f;
     [SerializeField] protected float yMax = 2f;
     [SerializeField] protected int pointsGived;
+    [SerializeField] protected GameObject powerUp;
     protected bool hasMoved = false;
 
     // Start is called before the first frame update
@@ -42,6 +43,10 @@ public class ParentEnemy : MonoBehaviour
                 var generator = FindObjectOfType<EnemyGenerator>();
                 generator.DecreaseEnemy();
                 generator.GetPoints(pointsGived);
+                if(Random.Range(0f, 1f) > 0.8f){
+                    GameObject powerUpInst = Instantiate(powerUp, transform.position, transform.rotation);
+                    Destroy(powerUpInst, 3f);
+                }
                 
             }
         }

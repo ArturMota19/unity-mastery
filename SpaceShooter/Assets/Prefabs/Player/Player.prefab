@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 1906865075081533213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.47, y: -0.01, z: 0}
+  m_LocalPosition: {x: -0.516, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,11 +223,13 @@ MonoBehaviour:
   secondShootPrefab: {fileID: 337484858688986175, guid: 470155fcfb4270848bc37aee81117789, type: 3}
   explosionPrefab: {fileID: 2903348594229735625, guid: 00a4c5c29abd7f542ad9c68c9fce34e0, type: 3}
   shootPoint: {fileID: 5092668541572674834}
+  shootLeft: {fileID: 6090446339301322665}
+  shootRight: {fileID: 7436216159024519962}
   health: 20
   shootSpeed: 10
   horizontalLimit: 8.3
   verticalLimit: 4.4
-  shootLevel: 2
+  shootLevel: 3
 --- !u!50 &2343973924761062363
 Rigidbody2D:
   serializedVersion: 4
@@ -325,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 9162562208921172110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0.51, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

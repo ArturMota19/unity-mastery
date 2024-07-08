@@ -34,6 +34,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("PowerUp")){
+            Destroy(other.gameObject);
+            if(shootLevel < 3){
+                shootLevel++;
+            }
+        }
+    }
     private void Moving()
     {
         float horizontal = Input.GetAxis("Horizontal");
