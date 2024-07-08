@@ -29,6 +29,7 @@ public class EnemyGenerator : MonoBehaviour
         this.points += points;
         if(this.points > baseLevel * level){
             level++;
+            
         }
     }
 

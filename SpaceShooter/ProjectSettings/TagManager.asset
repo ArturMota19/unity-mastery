@@ -18,7 +18,7 @@ TagManager:
   - Player
   - PlayerShoot
   - EnemiesShoot
-  - 
+  - Background
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3128076945
     locked: 0
   - name: Shoots
     uniqueID: 2515335471

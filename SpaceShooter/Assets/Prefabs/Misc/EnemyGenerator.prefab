@@ -47,4 +47,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 5382768479766861219, guid: e01faf4a60712b648bd70933be407877, type: 3}
   - {fileID: 1758471048867360409, guid: 93c26d27c87fb69499c3bcf0db6cf262, type: 3}
-  spawnTime: 1
+  points: 0
+  level: 1
+  baseLevel: 100
+  spawnTime: 3
+  enemyControlerQtd: 0
