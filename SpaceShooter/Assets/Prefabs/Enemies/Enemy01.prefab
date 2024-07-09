@@ -258,3 +258,4 @@ MonoBehaviour:
   yMax: 0
   pointsGived: 10
   powerUp: {fileID: 8197800394595217625, guid: 46bd5d17c394db245a715375ab33f825, type: 3}
+  itemRate: 0.99

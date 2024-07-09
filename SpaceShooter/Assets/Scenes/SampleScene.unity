@@ -698,8 +698,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1716077453135794464, guid: b980cd75518da184eb1395ed5acc0553, type: 3}
+      propertyPath: health
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716077453135794464, guid: b980cd75518da184eb1395ed5acc0553, type: 3}
       propertyPath: shootLevel
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8186580805846753778, guid: b980cd75518da184eb1395ed5acc0553, type: 3}
       propertyPath: m_Name
@@ -724,11 +728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6713358364980505502, guid: 6dfc5d9ce7459c74fabecd4680bd3514, type: 3}
       propertyPath: level
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6713358364980505502, guid: 6dfc5d9ce7459c74fabecd4680bd3514, type: 3}
       propertyPath: points
-      value: 270
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7147035482372290250, guid: 6dfc5d9ce7459c74fabecd4680bd3514, type: 3}
       propertyPath: m_LocalPosition.x

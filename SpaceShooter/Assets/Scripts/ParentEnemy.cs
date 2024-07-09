@@ -19,6 +19,7 @@ public class ParentEnemy : MonoBehaviour
     [SerializeField] protected float yMax = 2f;
     [SerializeField] protected int pointsGived;
     [SerializeField] protected GameObject powerUp;
+    [SerializeField] protected float itemRate = 0f;
     protected bool hasMoved = false;
 
     // Start is called before the first frame update
@@ -41,10 +42,11 @@ public class ParentEnemy : MonoBehaviour
                 Destroy(gameObject);
                 Instantiate(explosionPrefab, transform.position, transform.rotation);
                 var generator = FindObjectOfType<EnemyGenerator>();
-                generator.DecreaseEnemy();
                 generator.GetPoints(pointsGived);
-                if(Random.Range(0f, 1f) > 0.8f){
+                if(Random.Range(0f, 1f) > itemRate){
                     GameObject powerUpInst = Instantiate(powerUp, transform.position, transform.rotation);
+                    var dir = new UnityEngine.Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
+                    powerUpInst.GetComponent<Rigidbody2D>().velocity = dir * 2f;
                     Destroy(powerUpInst, 3f);
                 }
                 
@@ -84,8 +86,6 @@ public class ParentEnemy : MonoBehaviour
         if(other.CompareTag("EnemyDestroyer"))
         {
             Destroy(gameObject);
-            var generator = FindObjectOfType<EnemyGenerator>();
-            generator.DecreaseEnemy();
         }
         
     }
@@ -94,9 +94,15 @@ public class ParentEnemy : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerController>().LossHealth(1);
             Destroy(gameObject);
-            var generator = FindObjectOfType<EnemyGenerator>();
-            generator.DecreaseEnemy();
             Instantiate(explosionPrefab, transform.position, transform.rotation);
+        }
+    }
+
+    private void OnDestroy() {
+        var generator = FindObjectOfType<EnemyGenerator>();
+        
+        if(generator){
+            generator.DecreaseEnemy();
         }
     }
 }
