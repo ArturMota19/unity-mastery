@@ -86,6 +86,7 @@ public class ParentEnemy : MonoBehaviour
         if(other.CompareTag("EnemyDestroyer"))
         {
             Destroy(gameObject);
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
         }
         
     }

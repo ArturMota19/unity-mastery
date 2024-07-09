@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float horizontalLimit = 8.3f;
     [SerializeField] private float verticalLimit = 4f;
     [SerializeField] private int shootLevel = 1;
+    [SerializeField] private GameObject shield;
+    private float shieldTime = 0f;
+    private GameObject actualShield;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,9 @@ public class PlayerController : MonoBehaviour
 
         // fire
         Shooting();
+
+        // shield
+        ShieldCreator();
 
     }
 
@@ -69,6 +75,23 @@ public class PlayerController : MonoBehaviour
             WhichShoot(shootPrefab, shootPoint);
             WhichShoot(secondShootPrefab, shootLeft);
             WhichShoot(secondShootPrefab, shootRight);
+        }
+    }
+
+    private void ShieldCreator(){
+        if(Input.GetButtonDown("Shield") && !actualShield){
+            actualShield = Instantiate(shield, transform.position, transform.rotation);
+        }
+        if(actualShield){
+            actualShield.transform.position = transform.position;
+
+            shieldTime += Time.deltaTime;
+            if(shieldTime >= 5.8f){
+                shieldTime = 0f;
+                Destroy(actualShield);
+            }
+
+
         }
     }
 

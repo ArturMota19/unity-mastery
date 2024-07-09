@@ -8,6 +8,7 @@ TagManager:
   - Player01
   - EnemyDestroyer
   - PowerUp
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - EnemiesShoot
   - Background
   - PowerUp
-  - 
+  - Shield
   - 
   - 
   - 
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 399526053
+    locked: 0
+  - name: Shield
+    uniqueID: 336566415
     locked: 0

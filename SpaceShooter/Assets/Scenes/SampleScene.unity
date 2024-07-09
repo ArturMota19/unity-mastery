@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000a548d0172ff9ec95b5f122fa91aa72ba
+  m_ApplyToSortingLayers: 00000000a548d0172ff9ec95b5f122fa91aa72ba8f980f14
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -701,6 +701,10 @@ PrefabInstance:
       propertyPath: health
       value: 999
       objectReference: {fileID: 0}
+    - target: {fileID: 1716077453135794464, guid: b980cd75518da184eb1395ed5acc0553, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 4499541544907202698, guid: dc553799d6119c749b625ec5edbad5fa, type: 3}
     - target: {fileID: 1716077453135794464, guid: b980cd75518da184eb1395ed5acc0553, type: 3}
       propertyPath: shootLevel
       value: 3
