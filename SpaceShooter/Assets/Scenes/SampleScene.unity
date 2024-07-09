@@ -709,6 +709,10 @@ PrefabInstance:
       propertyPath: shootLevel
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1716077453135794464, guid: b980cd75518da184eb1395ed5acc0553, type: 3}
+      propertyPath: shootSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8186580805846753778, guid: b980cd75518da184eb1395ed5acc0553, type: 3}
       propertyPath: m_Name
       value: Player
