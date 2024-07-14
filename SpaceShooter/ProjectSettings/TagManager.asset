@@ -10,6 +10,7 @@ TagManager:
   - PowerUp
   - Shield
   - Boss
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Background
   - PowerUp
   - Shield
-  - 
+  - UI
   - 
   - 
   - 
@@ -61,4 +62,7 @@ TagManager:
     locked: 0
   - name: Shield
     uniqueID: 336566415
+    locked: 0
+  - name: UI
+    uniqueID: 612593347
     locked: 0

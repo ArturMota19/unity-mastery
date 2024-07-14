@@ -49,6 +49,9 @@ MonoBehaviour:
   - {fileID: 1758471048867360409, guid: 93c26d27c87fb69499c3bcf0db6cf262, type: 3}
   points: 0
   level: 1
-  baseLevel: 100
+  baseLevel: 120
   spawnTime: 3
   enemyControlerQtd: 0
+  bossAnimation: {fileID: 3869640057996369676, guid: 0b99019336450cd45a0b16aba1a422ba, type: 3}
+  boss: {fileID: 6084866537616753597, guid: 3a9326a3daba05246b01f238631caee6, type: 3}
+  pointsText: {fileID: 0}

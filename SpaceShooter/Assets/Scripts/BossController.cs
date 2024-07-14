@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : ParentEnemy
 {
@@ -19,6 +20,7 @@ public class BossController : ParentEnemy
     [SerializeField] private GameObject secondShoot;
     [SerializeField] private int[] states = {0, 1, 2};
     [SerializeField] float changeStatesAwait = 5f;
+    [SerializeField] private Image bossLife;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +29,8 @@ public class BossController : ParentEnemy
     // Update is called once per frame
     void Update()
     {
+        bossLife.fillAmount = (float)health / 100;
+        bossLife.color = Color.Lerp(Color.red, Color.green, (float)health / 100);
         ChangeStates();
         switch(bossState)
         {
@@ -91,8 +95,8 @@ public class BossController : ParentEnemy
 
     private void ChangeStates(){
         if(changeStatesAwait <= 0){
-            bossState = states[Random.Range(0, states.Length)];
-            changeStatesAwait = 10f;
+            bossState = states[Random.Range(0, states.Length)]; 
+            changeStatesAwait = 5f;
         }else{
             changeStatesAwait -= Time.deltaTime;
         }

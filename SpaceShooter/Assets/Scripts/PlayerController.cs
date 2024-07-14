@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,17 +20,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int shootLevel = 1;
     [SerializeField] private GameObject shield;
     [SerializeField] private int shieldNumber = 3;
+    [SerializeField] private Text lifeText;
+    [SerializeField] private Text shieldText;
+    [SerializeField] private Text gameOv;
     private float shieldTime = 0f;
     private GameObject actualShield;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ChangeUi();
     }
 
     // Update is called once per frame
     void Update()
     {
+        ChangeUi();
         // movement
         Moving();
 
@@ -41,6 +47,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void ChangeUi(){
+        if(GameObject.FindGameObjectWithTag("Player01") != null){
+            lifeText.text = health.ToString();
+        }else{
+            lifeText.text = "Game Over";
+        }
+        shieldText.text = shieldNumber.ToString();
+    }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("PowerUp")){
             Destroy(other.gameObject);
@@ -111,8 +125,15 @@ public class PlayerController : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
+            gameOv.text = "Game Over";
             Destroy(gameObject);
             Instantiate(explosionPrefab, transform.position, transform.rotation);
+            var gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            if(gm){
+                health = 0;
+                gm.InitScreen();
+            }
+
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyGenerator : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private GameObject boss;
     private bool bossAnimationController = false;
     private float bossTime = 5f;
+    [SerializeField] private Text pointsText;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class EnemyGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pointsText.text = points.ToString();
         if(level < 10){
             EnemyGeneratorFunction();
         }else{
@@ -81,19 +84,5 @@ public class EnemyGenerator : MonoBehaviour
             }
         }
     }
-
-    private void OnGUI() {
-        GUI.Label(new Rect(10, 10, 100, 20), "Points: " + points);
-        GUI.Label(new Rect(10, 30, 100, 20), "Level: " + level);
-    }
-
-    
-
-    // private void Shields(){
-    //     PlayerController player = FindObjectOfType<PlayerController>();
-    //     if(player){
-    //         int shieldNumber = player.GetShieldNumber();
-    //     }
-    // }
     
 }
