@@ -11,7 +11,11 @@ public class EnemyGenerator : MonoBehaviour
     private float spawnInterval = 0f;
     [SerializeField] private float spawnTime = 2f;
     [SerializeField] private int enemyControlerQtd = 0;
-    
+
+    [SerializeField] private GameObject bossAnimation;
+    [SerializeField] private GameObject boss;
+    private bool bossAnimationController = false;
+    private float bossTime = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +26,23 @@ public class EnemyGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        EnemyGeneratorFunction();
+        if(level < 10){
+            EnemyGeneratorFunction();
+        }else{
+            GenerateBoss();
+        }
     }
 
+    public void GenerateBoss(){
+        if(enemyControlerQtd <= 0 && bossTime > 0){
+            bossTime -= Time.deltaTime;
+        }
+        if(!bossAnimationController && bossTime <= 0){
+            GameObject animBoss = Instantiate(bossAnimation, Vector3.zero, transform.rotation);
+            Destroy(animBoss, 6.3f);
+            bossAnimationController = true;
+        }
+    }
     public void GetPoints(int points){
         this.points += points;
         if(this.points > baseLevel * level){
@@ -46,9 +64,6 @@ public class EnemyGenerator : MonoBehaviour
             int enemyQuantity = level * 4;
             
             while(enemyQuantity > enemyControlerQtd ){
-                Debug.Log("Creating enemy");
-                Debug.Log(enemyControlerQtd);
-                Debug.Log(GameObject.FindGameObjectsWithTag("Enemy").Length);
                 GameObject enemy;
                 // the higher the level, the more chance of strong enemies coming
                 float levelChance = Random.Range(0f, level);
@@ -66,4 +81,19 @@ public class EnemyGenerator : MonoBehaviour
             }
         }
     }
+
+    private void OnGUI() {
+        GUI.Label(new Rect(10, 10, 100, 20), "Points: " + points);
+        GUI.Label(new Rect(10, 30, 100, 20), "Level: " + level);
+    }
+
+    
+
+    // private void Shields(){
+    //     PlayerController player = FindObjectOfType<PlayerController>();
+    //     if(player){
+    //         int shieldNumber = player.GetShieldNumber();
+    //     }
+    // }
+    
 }

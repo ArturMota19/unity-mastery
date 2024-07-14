@@ -225,11 +225,13 @@ MonoBehaviour:
   shootPoint: {fileID: 5092668541572674834}
   shootLeft: {fileID: 6090446339301322665}
   shootRight: {fileID: 7436216159024519962}
-  health: 20
-  shootSpeed: 10
+  health: 50
+  shootSpeed: 5
   horizontalLimit: 8.3
   verticalLimit: 4.4
   shootLevel: 3
+  shield: {fileID: 4499541544907202698, guid: dc553799d6119c749b625ec5edbad5fa, type: 3}
+  shieldNumber: 3
 --- !u!50 &2343973924761062363
 Rigidbody2D:
   serializedVersion: 4

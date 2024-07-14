@@ -9,6 +9,7 @@ TagManager:
   - EnemyDestroyer
   - PowerUp
   - Shield
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float verticalLimit = 4f;
     [SerializeField] private int shootLevel = 1;
     [SerializeField] private GameObject shield;
+    [SerializeField] private int shieldNumber = 3;
     private float shieldTime = 0f;
     private GameObject actualShield;
     // Start is called before the first frame update
@@ -80,7 +81,10 @@ public class PlayerController : MonoBehaviour
 
     private void ShieldCreator(){
         if(Input.GetButtonDown("Shield") && !actualShield){
-            actualShield = Instantiate(shield, transform.position, transform.rotation);
+            if(shieldNumber > 0 && shieldNumber <= 3){
+                actualShield = Instantiate(shield, transform.position, transform.rotation);
+                shieldNumber--;
+            }
         }
         if(actualShield){
             actualShield.transform.position = transform.position;
@@ -95,6 +99,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DestroyShield(){
+        Destroy(actualShield);
+    }
     private void WhichShoot(GameObject createdShoot, Transform shootPointParam){
         GameObject shoot = Instantiate(createdShoot, shootPointParam.position, transform.rotation);
         shoot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed);
@@ -107,5 +114,9 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             Instantiate(explosionPrefab, transform.position, transform.rotation);
         }
+    }
+
+    public int GetShieldNumber(){
+        return shieldNumber;
     }
 }
