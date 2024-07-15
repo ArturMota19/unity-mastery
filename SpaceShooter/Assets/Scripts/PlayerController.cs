@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text lifeText;
     [SerializeField] private Text shieldText;
     [SerializeField] private Text gameOv;
+    [SerializeField] private AudioClip soundLaser;
+    [SerializeField] private AudioClip soundShieldUp;
+    [SerializeField] private AudioClip soundShieldDown;
     private float shieldTime = 0f;
     private GameObject actualShield;
     // Start is called before the first frame update
@@ -82,11 +85,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && shootLevel == 1)
         {
+            AudioSource.PlayClipAtPoint(soundLaser, Vector3.zero);
             WhichShoot(shootPrefab, shootPoint);
         }else if(Input.GetButtonDown("Fire1") && shootLevel == 2){
+            AudioSource.PlayClipAtPoint(soundLaser, Vector3.zero);
             WhichShoot(secondShootPrefab, shootLeft);
             WhichShoot(secondShootPrefab, shootRight);
         }else if(Input.GetButtonDown("Fire1") && shootLevel > 2){
+            AudioSource.PlayClipAtPoint(soundLaser, Vector3.zero);
             WhichShoot(shootPrefab, shootPoint);
             WhichShoot(secondShootPrefab, shootLeft);
             WhichShoot(secondShootPrefab, shootRight);
@@ -96,6 +102,7 @@ public class PlayerController : MonoBehaviour
     private void ShieldCreator(){
         if(Input.GetButtonDown("Shield") && !actualShield){
             if(shieldNumber > 0 && shieldNumber <= 3){
+                AudioSource.PlayClipAtPoint(soundShieldUp, Vector3.zero);
                 actualShield = Instantiate(shield, transform.position, transform.rotation);
                 shieldNumber--;
             }
@@ -105,6 +112,7 @@ public class PlayerController : MonoBehaviour
 
             shieldTime += Time.deltaTime;
             if(shieldTime >= 5.8f){
+                AudioSource.PlayClipAtPoint(soundShieldDown, Vector3.zero);
                 shieldTime = 0f;
                 Destroy(actualShield);
             }
@@ -125,16 +133,35 @@ public class PlayerController : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
-            gameOv.text = "Game Over";
             Destroy(gameObject);
+            gameOv.text = "Game Over";
             Instantiate(explosionPrefab, transform.position, transform.rotation);
             var gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             if(gm){
-                health = 0;
-                gm.InitScreen();
+                gm.RestartGame();
             }
 
         }
+    }
+
+    IEnumerator WinnedTimmereND(){
+        yield return new WaitForSeconds(15f);
+        Application.Quit();
+        
+        
+    }
+    IEnumerator WinnedTimmer(){
+        yield return new WaitForSeconds(7f);
+        gameOv.text = "You Win! Tks for playing!";
+        //green text
+        gameOv.color = new Color(0, 255, 0);
+        
+        
+    }
+
+    public void WinGame(){
+        StartCoroutine(WinnedTimmer());
+        StartCoroutine(WinnedTimmereND());
     }
 
     public int GetShieldNumber(){

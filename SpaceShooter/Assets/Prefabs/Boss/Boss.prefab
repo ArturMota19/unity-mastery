@@ -272,7 +272,7 @@ MonoBehaviour:
   shootPrefab: {fileID: 0}
   explosionPrefab: {fileID: 2710323625996011467, guid: 39fbb5067a58e0146925e8dd7873cab5, type: 3}
   shootPoint: {fileID: 0}
-  health: 100
+  health: 600
   impactShoot: {fileID: 2436667630945277084, guid: 1ad72faf58f33524ba0dcd4898c621db, type: 3}
   shootTime: 1.5
   shootSpeed: -5
@@ -281,6 +281,7 @@ MonoBehaviour:
   powerUp: {fileID: 0}
   itemRate: 0
   isBoss: 1
+  soundLaser: {fileID: 8300000, guid: f68e0b8d0df55cf4a99d82605063828a, type: 3}
   bossState: 0
   rb: {fileID: 0}
   limit: 6

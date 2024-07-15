@@ -26,7 +26,7 @@ TagManager:
   - PowerUp
   - Shield
   - UI
-  - 
+  - Post
   - 
   - 
   - 
@@ -65,4 +65,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 612593347
+    locked: 0
+  - name: Post
+    uniqueID: 35569513
     locked: 0

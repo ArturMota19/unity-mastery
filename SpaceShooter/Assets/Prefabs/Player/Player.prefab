@@ -225,15 +225,19 @@ MonoBehaviour:
   shootPoint: {fileID: 5092668541572674834}
   shootLeft: {fileID: 6090446339301322665}
   shootRight: {fileID: 7436216159024519962}
-  health: 50
-  shootSpeed: 5
+  health: 15
+  shootSpeed: 7
   horizontalLimit: 8.3
   verticalLimit: 4.4
   shootLevel: 1
   shield: {fileID: 4499541544907202698, guid: dc553799d6119c749b625ec5edbad5fa, type: 3}
-  shieldNumber: 3
+  shieldNumber: 5
   lifeText: {fileID: 0}
   shieldText: {fileID: 0}
+  gameOv: {fileID: 0}
+  soundLaser: {fileID: 8300000, guid: 60e627bc22851ca45b32ee8cd407bc33, type: 3}
+  soundShieldUp: {fileID: 8300000, guid: 22eda0b6eedba884ca456d9a43cf4241, type: 3}
+  soundShieldDown: {fileID: 8300000, guid: fe285d84d628fd148a073d81fe8ea945, type: 3}
 --- !u!50 &2343973924761062363
 Rigidbody2D:
   serializedVersion: 4

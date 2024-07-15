@@ -18,6 +18,8 @@ public class EnemyGenerator : MonoBehaviour
     private bool bossAnimationController = false;
     private float bossTime = 5f;
     [SerializeField] private Text pointsText;
+    [SerializeField] private AudioClip music;
+    [SerializeField] private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,8 @@ public class EnemyGenerator : MonoBehaviour
             bossTime -= Time.deltaTime;
         }
         if(!bossAnimationController && bossTime <= 0){
+            audioSource.clip = music;
+            audioSource.Play();
             GameObject animBoss = Instantiate(bossAnimation, Vector3.zero, transform.rotation);
             Destroy(animBoss, 6.3f);
             bossAnimationController = true;
@@ -64,7 +68,7 @@ public class EnemyGenerator : MonoBehaviour
         if(spawnInterval <= 0 && enemyControlerQtd <= 0)
         {
             // creating enemies
-            int enemyQuantity = level * 4;
+            int enemyQuantity = level * 5;
             
             while(enemyQuantity > enemyControlerQtd ){
                 GameObject enemy;

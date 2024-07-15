@@ -29,8 +29,8 @@ public class BossController : ParentEnemy
     // Update is called once per frame
     void Update()
     {
-        bossLife.fillAmount = (float)health / 100;
-        bossLife.color = Color.Lerp(Color.red, Color.green, (float)health / 100);
+        bossLife.fillAmount = (float)health / 600;
+        bossLife.color = Color.Lerp(Color.red, Color.green, (float)health / 600);
         ChangeStates();
         switch(bossState)
         {
@@ -83,6 +83,7 @@ public class BossController : ParentEnemy
     }
 
     private void FirstShoot(){
+        AudioSource.PlayClipAtPoint(soundLaser, UnityEngine.Vector2.zero);
         GameObject shootPos1 = Instantiate(firstShoot, firstShootPos.position, Quaternion.identity);
         shootPos1.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shootSpeed);
         GameObject shootPos2 = Instantiate(firstShoot, firstShootPos2.position, Quaternion.identity);

@@ -3,19 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class GameManager : MonoBehaviour
 {
     private void Awake() {
-        //only one gm
+        // Ensure only one GameManager exists
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
-        if(objs.Length > 1){
+        if (objs.Length > 1) {
             Destroy(this.gameObject);
+        } else {
+            DontDestroyOnLoad(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
     }
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        // Ensure only one GameManager exists
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
+        if (objs.Length > 1) {
+            Destroy(this.gameObject);
+        } else {
+            DontDestroyOnLoad(this.gameObject);
+        }
         
     }
 
@@ -24,21 +36,33 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
     IEnumerator FirstScene(){
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(0);
-    
     }
-    // init scene
+    IEnumerator StartTime(){
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(1);
+    }
+    
+
+    // Initialize scene
     public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
+    public void RestartGame(){
+        StartCoroutine(StartTime());
+    
+    }
     public void InitScreen(){
         StartCoroutine(FirstScene());
     }
+
     public void QuitGame()
     {
         Application.Quit();
     }
+
 }

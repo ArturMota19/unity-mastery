@@ -22,6 +22,7 @@ public class ParentEnemy : MonoBehaviour
     [SerializeField] protected GameObject powerUp;
     [SerializeField] protected float itemRate = 0f;
     [SerializeField] protected bool isBoss = false;
+    [SerializeField] protected AudioClip soundLaser;
     protected bool hasMoved = false;
 
     // Start is called before the first frame update
@@ -41,6 +42,13 @@ public class ParentEnemy : MonoBehaviour
             health -= damage;
             if(health <= 0)
             {
+                if(isBoss){
+                    var player = GameObject.FindGameObjectWithTag("Player01");
+                    var playerController = player.GetComponent<PlayerController>();
+                    playerController.WinGame();
+                }
+
+                
                 Destroy(gameObject);
                 Instantiate(explosionPrefab, transform.position, transform.rotation);
                 var generator = FindObjectOfType<EnemyGenerator>();
@@ -51,6 +59,8 @@ public class ParentEnemy : MonoBehaviour
                     powerUpInst.GetComponent<Rigidbody2D>().velocity = dir * 2f;
                     Destroy(powerUpInst, 3f);
                 }
+
+
                 
             }
         }
@@ -60,6 +70,7 @@ public class ParentEnemy : MonoBehaviour
         shootTime -= Time.deltaTime;
         if (shootTime <= 0 && GetComponentInChildren<SpriteRenderer>().isVisible && GameObject.FindGameObjectWithTag("Player01") != null)
         {
+            AudioSource.PlayClipAtPoint(soundLaser, UnityEngine.Vector2.zero);
             var shoot = Instantiate(shootPrefab, shootPoint.position, transform.rotation);
             shoot.GetComponent<Rigidbody2D>().velocity = new UnityEngine.Vector2(0f, shootSpeed);
             shootTime = Random.Range(1f, 3f);
@@ -71,6 +82,7 @@ public class ParentEnemy : MonoBehaviour
         shootTime -= Time.deltaTime;
         if (shootTime <= 0 && GetComponentInChildren<SpriteRenderer>().isVisible && GameObject.FindGameObjectWithTag("Player01") != null)
         {
+            AudioSource.PlayClipAtPoint(soundLaser, UnityEngine.Vector2.zero);
             var player = GameObject.FindGameObjectWithTag("Player01");
             var shoot = Instantiate(shootPrefab, shootPoint.position, transform.rotation);
             var direction = (player.transform.position - shoot.transform.position).normalized;
@@ -87,6 +99,7 @@ public class ParentEnemy : MonoBehaviour
         shootTime -= Time.deltaTime;
         if (GetComponentInChildren<SpriteRenderer>().isVisible && GameObject.FindGameObjectWithTag("Player01") != null)
         {
+            AudioSource.PlayClipAtPoint(soundLaser, UnityEngine.Vector2.zero);
             var player = GameObject.FindGameObjectWithTag("Player01");
             var shoot = Instantiate(shootBoss, shootBossPoint, transform.rotation);
             var direction = (player.transform.position - shoot.transform.position).normalized;

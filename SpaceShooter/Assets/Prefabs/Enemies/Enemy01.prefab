@@ -259,3 +259,5 @@ MonoBehaviour:
   pointsGived: 10
   powerUp: {fileID: 8197800394595217625, guid: 46bd5d17c394db245a715375ab33f825, type: 3}
   itemRate: 0.99
+  isBoss: 0
+  soundLaser: {fileID: 8300000, guid: f68e0b8d0df55cf4a99d82605063828a, type: 3}
